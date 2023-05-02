@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:roadside_unit/core/routes/routes.dart';
 import 'package:roadside_unit/features/data/model/order/order_model.dart';
 import 'package:roadside_unit/features/domain/repository/order_repositoy.dart';
@@ -46,6 +47,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     if (data is DataSuccess && data.data != null) {}
     if (data is DataFailed) {}
   } */
+  final AudioPlayer _audioPlayer = AudioPlayer();
 
   void connectServer(ConnectServer event, Emitter<HomeState> emit) async {
     emit(state.copyWith(
@@ -81,6 +83,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       print(l.error);
     }, (r) {
       print("ok${r.length}");
+      if (r.isNotEmpty) {
+        _audioPlayer.setAsset('assets/have.m4a');
+        _audioPlayer.play();
+      }
       emit(state.copyWith(orderWaiting: r, count: state.count + 1));
 
       print("update thanh cong");
@@ -124,9 +130,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       print("chon don hang thanh cong");
       emit(state.copyWith(
         orderPending: List.from(state.orderPending)..add(r),
+        orderWaiting: [],
         count: state.count + 1,
         loading: HomeStatusBloc.success,
       ));
+      add(GetOrderWaiting());
       ScaffoldMessenger.of(AppNavigator.navigatorKey.currentContext!)
           .showSnackBar(const SnackBar(
         content: Text("Chọn đơn hàng thành công"),

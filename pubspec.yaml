@@ -59,6 +59,7 @@ dependencies:
   shimmer: ^2.0.0
   url_launcher: ^6.1.10
   fluttertoast: ^8.2.1
+  just_audio: ^0.9.32
 
 dev_dependencies:
   flutter_test:
@@ -89,6 +90,7 @@ flutter:
   assets:
     - .env  
     - assets/img/
+    - assets/
     - assets/img/img/
   # assets:
   #   - images/a_dot_burr.jpeg
