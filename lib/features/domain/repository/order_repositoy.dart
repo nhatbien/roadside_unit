@@ -11,6 +11,8 @@ abstract class OrderRepository {
   Future<Either<ErrorResponse, OrderModel>> selectOrder(int orderId);
   Future<Either<ErrorResponse, List<OrderModel>>> getOrderWaiting();
   Future<Either<ErrorResponse, List<OrderModel>>> getOrderPending();
+  Future<Either<ErrorResponse, List<OrderModel>>> getHistoryOrder();
+
   Future<Either<ErrorResponse, OrderModel>> putOrder(
       int orderId, int statusOrder);
   Future<bool> logout();

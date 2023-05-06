@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:roadside_unit/features/presentation/blocs/history/history_order_bloc.dart';
 import 'package:roadside_unit/features/presentation/blocs/home/home_bloc.dart';
 
 import 'core/routes/routes.dart';
@@ -28,6 +29,7 @@ class BlocApp extends StatelessWidget {
         BlocProvider<AuthBloc>(create: (_) => injector()..add(AuthInit())),
         BlocProvider<OrderBloc>(create: (_) => injector()),
         BlocProvider<HomeBloc>(create: (_) => injector()),
+        BlocProvider<HistoryOrderBloc>(create: (_) => injector()),
       ],
       child: const MyApp(),
     );

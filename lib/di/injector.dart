@@ -15,6 +15,7 @@ import '../features/domain/repository/auth_repository.dart';
 import '../features/domain/repository/map_repository.dart';
 import '../features/domain/repository/order_repositoy.dart';
 import '../features/presentation/blocs/auth/auth_bloc.dart';
+import '../features/presentation/blocs/history/history_order_bloc.dart';
 import '../features/presentation/blocs/order/order_bloc.dart';
 import '../service/location_service.dart';
 
@@ -103,5 +104,8 @@ void bloc() {
   );
   injector.registerFactory<HomeBloc>(
     () => HomeBloc(injector()),
+  );
+  injector.registerFactory<HistoryOrderBloc>(
+    () => HistoryOrderBloc(injector()),
   );
 }

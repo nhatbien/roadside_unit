@@ -3,6 +3,20 @@ import 'package:json_annotation/json_annotation.dart';
 part 'order_model.g.dart';
 
 @JsonSerializable()
+class ListOrderResponse {
+  bool? status;
+  String? message;
+  List<OrderModel>? data;
+
+  ListOrderResponse({this.status, this.message, this.data});
+
+  factory ListOrderResponse.fromJson(Map<String, dynamic> json) =>
+      _$ListOrderResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ListOrderResponseToJson(this);
+}
+
+@JsonSerializable()
 class ListOrderWaitingResponse {
   bool? status;
   String? message;
@@ -39,9 +53,11 @@ class OrderModel {
   final int? status;
   final double? lat;
   final double? lng;
+  final double? stats;
+
   @JsonKey(name: 'created_at')
   final String? createdAt;
-  @JsonKey(name: 'update_at')
+  @JsonKey(name: 'updated_at')
   final String? updatedAt;
   final User? user;
   @JsonKey(name: 'rescue_unit')
@@ -57,6 +73,7 @@ class OrderModel {
       this.createdAt,
       this.updatedAt,
       this.user,
+      this.stats,
       this.rescueUnit});
 
   factory OrderModel.fromJson(Map<String, dynamic> json) =>
@@ -79,7 +96,7 @@ class User {
   double? lng;
   @JsonKey(name: 'created_at')
   String? createdAt;
-  @JsonKey(name: 'update_at')
+  @JsonKey(name: 'updated_at')
   String? updatedAt;
   Role? role;
 
@@ -119,7 +136,7 @@ class RescueUnit {
   int? status;
   double? lat;
   double? lng;
-  @JsonKey(name: 'update_at')
+  @JsonKey(name: 'updated_at')
   String? updatedAt;
   @JsonKey(name: 'created_at')
   String? createdAt;

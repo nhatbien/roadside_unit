@@ -62,7 +62,7 @@ class _PhoneInput extends StatelessWidget {
             }
           },
           decoration: InputDecoration(
-            labelText: "Username",
+            labelText: "SĐT",
             labelStyle: TextStyle(
                 color: Theme.of(context).brightness == Brightness.dark
                     ? Colors.white.withOpacity(0.7)

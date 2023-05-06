@@ -59,13 +59,13 @@ class _DrawerPageState extends State<DrawerPage> {
                     const SizedBox(
                       height: 30,
                     ),
-                    DrawerItem(
+                    /*  DrawerItem(
                         name: 'Setting',
                         icon: Icons.settings,
                         onPressed: () => onItemPressed(context, index: 4)),
                     const SizedBox(
                       height: 30,
-                    ),
+                    ), */
                     DrawerItem(
                         name: 'Log out',
                         icon: Icons.logout,
@@ -85,6 +85,8 @@ class _DrawerPageState extends State<DrawerPage> {
 
     switch (index) {
       case 0:
+        AppNavigator.push(Routes.history);
+
         break;
       case 1:
         AppNavigator.push(Routes.editProfile);

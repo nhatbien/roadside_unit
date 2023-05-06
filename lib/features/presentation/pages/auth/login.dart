@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                   children: <Widget>[
                     _buildLogo(),
                     const LoginFormWidget(),
-                    _buildRegister(),
+                    // _buildRegister(),
                   ]))),
     );
   }
@@ -87,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
           )),
     );
   }
-
+/* 
   Widget _buildRegister() {
     return Positioned(
       bottom: MediaQuery.of(context).size.height / 5,
@@ -106,5 +106,5 @@ class _LoginPageState extends State<LoginPage> {
             AppNavigator.push(Routes.register);
           }),
     );
-  }
+  } */
 }

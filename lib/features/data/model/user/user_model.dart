@@ -26,7 +26,7 @@ class UserModel {
   final String? email;
   final String? phone;
   final String? password;
-  @JsonKey(name: 'full_name')
+  @JsonKey(name: 'name')
   final String? fullName;
   final String? avatar;
   final String? address;

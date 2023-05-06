@@ -189,7 +189,7 @@ void cancelReasonTable(
                             orderId: state.order?.id ?? 0,
                             orderStatusId: 6,
                             reason: character ?? ""));
-                        Navigator.of(context).pop(6);
+                        Navigator.of(context).pop();
                         Fluttertoast.showToast(
                           msg: 'Đơn hàng ${state.order?.id} đã hủy',
                           backgroundColor: Colors.red,

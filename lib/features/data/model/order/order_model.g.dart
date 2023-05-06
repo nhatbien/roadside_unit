@@ -6,6 +6,22 @@ part of 'order_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+ListOrderResponse _$ListOrderResponseFromJson(Map<String, dynamic> json) =>
+    ListOrderResponse(
+      status: json['status'] as bool?,
+      message: json['message'] as String?,
+      data: (json['data'] as List<dynamic>?)
+          ?.map((e) => OrderModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$ListOrderResponseToJson(ListOrderResponse instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'message': instance.message,
+      'data': instance.data,
+    };
+
 ListOrderWaitingResponse _$ListOrderWaitingResponseFromJson(
         Map<String, dynamic> json) =>
     ListOrderWaitingResponse(
@@ -48,10 +64,11 @@ OrderModel _$OrderModelFromJson(Map<String, dynamic> json) => OrderModel(
       address: json['address'] as String?,
       status: json['status'] as int?,
       createdAt: json['created_at'] as String?,
-      updatedAt: json['update_at'] as String?,
+      updatedAt: json['updated_at'] as String?,
       user: json['user'] == null
           ? null
           : User.fromJson(json['user'] as Map<String, dynamic>),
+      stats: (json['stats'] as num?)?.toDouble(),
       rescueUnit: json['rescue_unit'] == null
           ? null
           : RescueUnit.fromJson(json['rescue_unit'] as Map<String, dynamic>),
@@ -65,8 +82,9 @@ Map<String, dynamic> _$OrderModelToJson(OrderModel instance) =>
       'status': instance.status,
       'lat': instance.lat,
       'lng': instance.lng,
+      'stats': instance.stats,
       'created_at': instance.createdAt,
-      'update_at': instance.updatedAt,
+      'updated_at': instance.updatedAt,
       'user': instance.user,
       'rescue_unit': instance.rescueUnit,
     };
@@ -79,7 +97,7 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
       fullName: json['full_name'] as String?,
       age: json['age'] as int?,
       createdAt: json['created_at'] as String?,
-      updatedAt: json['update_at'] as String?,
+      updatedAt: json['updated_at'] as String?,
       role: json['role'] == null
           ? null
           : Role.fromJson(json['role'] as Map<String, dynamic>),
@@ -99,7 +117,7 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'lat': instance.lat,
       'lng': instance.lng,
       'created_at': instance.createdAt,
-      'update_at': instance.updatedAt,
+      'updated_at': instance.updatedAt,
       'role': instance.role,
     };
 
@@ -112,7 +130,7 @@ Map<String, dynamic> _$RoleToJson(Role instance) => <String, dynamic>{
     };
 
 RescueUnit _$RescueUnitFromJson(Map<String, dynamic> json) => RescueUnit(
-      updatedAt: json['update_at'] as String?,
+      updatedAt: json['updated_at'] as String?,
       createdAt: json['created_at'] as String?,
     )
       ..username = json['username'] as String?
@@ -136,6 +154,6 @@ Map<String, dynamic> _$RescueUnitToJson(RescueUnit instance) =>
       'status': instance.status,
       'lat': instance.lat,
       'lng': instance.lng,
-      'update_at': instance.updatedAt,
+      'updated_at': instance.updatedAt,
       'created_at': instance.createdAt,
     };

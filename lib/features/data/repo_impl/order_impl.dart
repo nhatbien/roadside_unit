@@ -139,4 +139,23 @@ class OrderImpl implements OrderRepository {
 
     return true;
   }
+
+  @override
+  Future<Either<ErrorResponse, List<OrderModel>>> getHistoryOrder() async {
+    try {
+      final response = await _clientDio
+          .getJson(buildUrl('/rescue-unit/order/history'), headers: {
+        "Authorization": "Bearer ${_pref.token}",
+      });
+      return Right(ListOrderResponse.fromJson(response.data).data ?? []);
+    } on DioError catch (e) {
+      if (e.response != null) {
+        return Left(SingleMessageErrorResponse.fromJson(e.response?.data));
+      }
+      return Left(SingleMessageErrorResponse(
+        error: e.message ?? 'Error',
+        status: false,
+      ));
+    }
+  }
 }

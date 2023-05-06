@@ -8,6 +8,7 @@ import 'package:roadside_unit/features/data/model/order/order_model.dart';
 import 'package:roadside_unit/features/presentation/blocs/auth/auth_bloc.dart';
 import 'package:roadside_unit/features/presentation/blocs/home/home_bloc.dart';
 import 'package:roadside_unit/features/presentation/blocs/order/order_bloc.dart';
+import 'package:roadside_unit/features/presentation/pages/drawer/drawer_page.dart';
 import 'package:roadside_unit/features/presentation/pages/home/widget/bottom_button_widget.dart';
 import 'package:roadside_unit/features/presentation/pages/home/widget/order_page.dart';
 import 'package:roadside_unit/features/presentation/pages/home/widget/order_widget.dart';
@@ -30,10 +31,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final GlobalKey<ScaffoldState> _key = GlobalKey(); // Create a key
+
   @override
   void initState() {
     context.read<HomeBloc>().add(GetOrderPending());
-    context.read<AuthBloc>().add(LocationEvent());
     context.read<AuthBloc>().add(LocationEvent());
     super.initState();
   }
@@ -42,6 +44,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Stack(children: [
       Scaffold(
+        drawer: const DrawerPage(),
+        key: _key,
         appBar: buildAppBar(),
         body: DefaultTabController(
             length: 2,
@@ -121,7 +125,7 @@ class _HomePageState extends State<HomePage> {
   PreferredSizeWidget buildAppBar() {
     return AppBar(
       toolbarHeight: 75,
-      /*  leading: IconButton(
+      leading: IconButton(
           icon: Icon(
             Icons.sort_outlined,
             color: Theme.of(context).brightness == Brightness.dark
@@ -129,8 +133,8 @@ class _HomePageState extends State<HomePage> {
                 : Colors.white,
           ),
           onPressed: () {
-            /* _key.currentState!.openDrawer() */;
-          }), */
+            _key.currentState?.openDrawer();
+          }),
       automaticallyImplyLeading: false,
       backgroundColor: Theme.of(context).brightness == Brightness.dark
           ? Colors.white
