@@ -95,41 +95,43 @@ class MyOrderHistoryItemWidget extends StatelessWidget {
           const SizedBox(
             height: 5,
           ),
-          Row(
-            children: [
-              Text("Khách hàng : ",
-                  style: Theme.of(context).textTheme.bodyMedium!.merge(
-                      const TextStyle(
-                          fontSize: 15,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold))),
-              Text(order.user?.fullName ?? "Không tên",
-                  style: Theme.of(context).textTheme.bodyMedium!.merge(
-                      TextStyle(
-                          fontSize: 15,
-                          color: Theme.of(context).colorScheme.secondary,
-                          fontWeight: FontWeight.bold))),
-              const SizedBox(
-                width: 5,
-              ),
-              Icon(
-                Icons.circle,
-                size: 7,
-                color: Theme.of(context).focusColor,
-              ),
-              const SizedBox(
-                width: 5,
-              ),
-              Flexible(
-                child: Text("Miễn phí",
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.bodySmall!.merge(
-                        TextStyle(
-                            fontSize: statusFontSize == true ? 18 : 15,
-                            color: Colors.green,
+          Expanded(
+            child: Row(
+              children: [
+                Text("Khách hàng : ",
+                    style: Theme.of(context).textTheme.bodyMedium!.merge(
+                        const TextStyle(
+                            fontSize: 15,
+                            color: Colors.black,
                             fontWeight: FontWeight.bold))),
-              ),
-            ],
+                Text(order.user?.fullName ?? "Không tên",
+                    style: Theme.of(context).textTheme.bodyMedium!.merge(
+                        TextStyle(
+                            fontSize: 15,
+                            color: Theme.of(context).colorScheme.secondary,
+                            fontWeight: FontWeight.bold))),
+                const SizedBox(
+                  width: 5,
+                ),
+                Icon(
+                  Icons.circle,
+                  size: 7,
+                  color: Theme.of(context).focusColor,
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Flexible(
+                  child: Text("Miễn phí",
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.bodySmall!.merge(
+                          TextStyle(
+                              fontSize: statusFontSize == true ? 18 : 15,
+                              color: Colors.green,
+                              fontWeight: FontWeight.bold))),
+                ),
+              ],
+            ),
           ),
         ],
       ),
