@@ -185,10 +185,10 @@ void cancelReasonTable(
                           timeInSecForIosWeb: 1,
                         );
                       } else {
-                        context.read<OrderBloc>().add(PutDeliveredCancelEvent(
-                            orderId: state.order?.id ?? 0,
-                            orderStatusId: 6,
-                            reason: character ?? ""));
+                        context.read<OrderBloc>().add(PutDeliveredEvent(
+                              orderId: state.order?.id ?? 0,
+                              orderStatusId: 5,
+                            ));
                         Navigator.of(context).pop();
                         Fluttertoast.showToast(
                           msg: 'Đơn hàng ${state.order?.id} đã hủy',

@@ -37,7 +37,7 @@ class AuthImpl implements AuthRepository {
   Future<Either<ErrorResponse, UserModel>> getProfile() async {
     try {
       final response =
-          await _clientDio.getJson(buildUrl('/user/profile'), headers: {
+          await _clientDio.getJson(buildUrl('/rescue-unit/profile'), headers: {
         "Authorization": "Bearer ${_pref.token}",
       });
       return Right(UserResponse.fromJson(response.data).data);

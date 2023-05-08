@@ -25,9 +25,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthInit>(
       init,
     );
-    on<GetUserInfo>(
+    /*  on<GetUserInfo>(
       getProfile,
-    );
+    ); */
     on<LoginSubmitted>(
       loginSubmit,
     );
@@ -55,6 +55,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
     on<LocationChange>(
       locationChange,
+    );
+    on<GetUserInfo>(
+      getProfile,
     );
   }
   StreamSubscription<Position>? _positionSubscription;
@@ -120,7 +123,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       ));
     }, (r) {
       emit(state.copyWith(
-        status: AuthStatusBloc.authenticated,
         user: r,
       ));
     });

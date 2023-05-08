@@ -137,7 +137,7 @@ RescueUnit _$RescueUnitFromJson(Map<String, dynamic> json) => RescueUnit(
       ..email = json['email'] as String?
       ..phone = json['phone'] as String?
       ..password = json['password'] as String?
-      ..fullName = json['full_name'] as String?
+      ..fullName = json['name'] as String?
       ..age = json['age'] as int?
       ..status = json['status'] as int?
       ..lat = (json['lat'] as num?)?.toDouble()
@@ -149,7 +149,7 @@ Map<String, dynamic> _$RescueUnitToJson(RescueUnit instance) =>
       'email': instance.email,
       'phone': instance.phone,
       'password': instance.password,
-      'full_name': instance.fullName,
+      'name': instance.fullName,
       'age': instance.age,
       'status': instance.status,
       'lat': instance.lat,

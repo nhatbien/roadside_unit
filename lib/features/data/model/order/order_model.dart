@@ -130,7 +130,7 @@ class RescueUnit {
   String? email;
   String? phone;
   String? password;
-  @JsonKey(name: 'full_name')
+  @JsonKey(name: 'name')
   String? fullName;
   int? age;
   int? status;

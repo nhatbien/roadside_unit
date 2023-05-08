@@ -37,6 +37,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     context.read<HomeBloc>().add(GetOrderPending());
     context.read<AuthBloc>().add(LocationEvent());
+    context.read<AuthBloc>().add(GetUserInfo());
     super.initState();
   }
 
