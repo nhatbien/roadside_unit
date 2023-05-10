@@ -55,6 +55,8 @@ class AppNavigator {
     switch (settings.name) {
       case _Paths.login:
         return FadeRoute(page: const LoginPage());
+      case _Paths.splash:
+        return FadeRoute(page: const SlashPage());
       case _Paths.home:
         return FadeRoute(page: const HomePage());
       case _Paths.editProfile:

@@ -47,7 +47,7 @@ class _OrderDetailState extends State<OrderDetail> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  _buildPeriodEdit("Xe 4 bánh"),
+                  _buildPeriodEdit("Xe hơi"),
                   const SizedBox(height: 18),
                   _buildBreeding(state.order?.user ?? User()),
                   const SizedBox(

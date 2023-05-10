@@ -46,6 +46,16 @@ class _HomePageState extends State<HomePage> {
     return Stack(children: [
       Scaffold(
         drawer: const DrawerPage(),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            context.read<HomeBloc>().add(GetOrderPending());
+          },
+          backgroundColor: Colors.white,
+          child: const Icon(
+            Icons.refresh,
+            color: Colors.black,
+          ),
+        ),
         key: _key,
         appBar: buildAppBar(),
         body: DefaultTabController(

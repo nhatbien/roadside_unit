@@ -53,7 +53,7 @@ class ContactWidget extends StatelessWidget {
                             child: MaterialButton(
                               padding: const EdgeInsets.all(0),
                               onPressed: () {
-                                //launchUrlString("tel:${state.setting!.phone}");
+                                launchUrlString("tel:113");
                               },
                               color: Theme.of(context).colorScheme.secondary,
                               shape: const StadiumBorder(),
